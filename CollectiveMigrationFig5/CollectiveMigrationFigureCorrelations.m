@@ -1,7 +1,11 @@
 %% Collective Migration Figure: Correlations 
-% by N.S.
-% using 5 high temporal resolution birds. 
+% by N.S., using 5 high temporal resolution birds. 
 
+%execute from the root directory of cloned repository!
+
+%load in data and set data as "current"
+addpath ../ProcessedData 
+addpath ../Functions
 clearvars
 load('birds_headCorrs_table.mat') %generated angle difference between pairs of cells, n = 5 birds, done for each bird and session separately then concatenated. 
 load('birds_speedCorr_table.mat')%generated Spearman correlations of 5 birds' cells' interpolated velocities. pairs produced within bird and within session. 

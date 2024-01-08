@@ -1,7 +1,11 @@
 %% Position Entropy computation in 2D, written initially by B.S. and N.S.
 %see also: https://www.mathworks.com/matlabcentral/fileexchange/12857-entropy
 
+%execute from the root directory of cloned repository!
+
 %load in data and set data as "current"
+addpath ../ProcessedData 
+addpath ../Functions
 load('grey3LHVC_dynamic_stats.mat')  %grey3LHVC in manuscript, but can change to different bird/region
 current = grey3LHVC_dynamic_stats; %grey3LHVC in manuscript, but can change to different bird/region
 
