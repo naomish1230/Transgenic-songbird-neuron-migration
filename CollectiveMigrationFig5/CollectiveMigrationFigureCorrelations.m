@@ -1,4 +1,5 @@
-% Collective Migration Figure: Correlations% Collective Migration Figure: Correlations
+%% Collective Migration Figure: Correlations 
+% by N.S
 % using 5 high temporal resolution birds. 
 
 clearvars

@@ -3,18 +3,20 @@
 
 %load in data and set data as "current"
 cd C:/Users/naomish/Documents/GitHub/In-vivo-Migratory-Dynamics/EntropyFig/
-load('grey3LHVC_dynamic_stats.mat') %change if want to run different bird
-current = grey3LHVC_dynamic_stats; %change if want to run different bird
+load('grey3LHVC_dynamic_stats.mat')  %grey3LHVC in manuscript, but can change to different bird/region
+current = grey3LHVC_dynamic_stats; %grey3LHVC in manuscript, but can change to different bird/region
 
 clearvars -except current
-current = RenumberCells(current); %makes sure all cells going in order with no skips
-%create a figure which is going to be cool
+current = RenumberCells(current); %makes sure all cells going in order with no skips in cell number even if missing/removed cells
+
+%create figure
 figure();
 subplot(1,2,1)
 hold on
 
 %set your microns per pixel scale, number of timepoints and number of bins
 microns_per_FOV=current.MaxX(1)*2; timepoints=current.MaxF(1); number_of_bins=200;
+% (MaxX*2 is width of FOV, because MaxX is width of one quadrant, which is 1/2 total width)
 
 %% compute entropy for each number of bins and loop over number of timepoints
 for t=1:timepoints
@@ -25,25 +27,23 @@ numcells(t)=length(XandY);
 for nbins=3:number_of_bins
 bincounts2d = hist3(XandY,[nbins nbins]); %use hist3 to count the number of cells in each bin
 r=hist(bincounts2d(:)); %turn the bin counts into a histogram 
-p = r/sum(r);%compute the probability distribution by normalizing p to number of cells
-p(p==0)=[];
+p = r/sum(r); %compute the probability distribution by normalizing p to number of cells
+p(p==0)=[]; %remove zeros
 bent(nbins,t) = -sum(p.*log(p)); %calculate entropy
 scale(nbins)=microns_per_FOV/nbins;
 end
 end
 
-%plot(XandY(:,1),XandY(:,2),'.k','LineWidth',2) %just dots
-plot(XandY(:,1),XandY(:,2),'o','Color',[0.2 0.2 0.2],'LineWidth',2,'MarkerSize',4) %plots positions as little grey donuts
+%plot positions 
+plot(XandY(:,1),XandY(:,2),'o','Color',[0.2 0.2 0.2],'LineWidth',2,'MarkerSize',4) 
  ylabel ('Y (microns)')
  xlabel ('X (microns)')
  set(gca,'YDir','reverse')
  title ('Final Cell Position')
 
+ %plot mean entropy[positions for all timepoints] as a function of bin size
 subplot(1,2,2)
 hold on
-% plot(log10(scale),mean(bent,2)+std(bent')','-.k')
-% plot(log10(scale),mean(bent,2),'.k')
-% plot(log10(scale),mean(bent,2)-std(bent')','-.k')
  errorbar(log10(scale),mean(bent,2),std(bent')','.k','MarkerSize',10)
  ylabel ('Entropy')
  xlabel ('log10 Bin size (microns)')
@@ -56,7 +56,7 @@ for nbins=3:number_of_bins
 numbins=nbins^2; %count the total number of bins
 probs=ones(numbins,1)/numbins; %compute the probability that a cell gets added to each bin
 %now compute "maximum entropy" entropy of a multinomial distribution
-simulated_data=mnrnd(ceil(mean(numcells)),probs); %min numb cells
+simulated_data=mnrnd(ceil(mean(numcells)),probs); %min number cells
 r=histcounts(simulated_data);
 p=r./sum(r);
 ment(nbins,i)= -nansum(p.*log(p)); %calculate entropy
@@ -86,13 +86,11 @@ disp(['Percent error: ' num2str((PE*100)) '%'])
 
 %% Heading Entropy 
 clearvars -except current
-%=========set your microns per pixel scale and the time interval you want to compute over
-%diff ways of computing error bars: set timebin to 0 and toggle to some micron shift value, or timebin to 1-tlast-1,or tlast.
-timebin = max(current.F); %setting for the figure in the paper --> don't change
-toggle = 0;
-arrowwidth= 0.8;
-colorarrows = 0; %if 1, will color according to colorvec
-    colorvec = current.Z; %set the vector you want to color arrows by
+%=========USER INPUT (keep default for replicating paper figure)
+timebin = max(current.F); %setting for the figure in Shvedov et al.: timebin = max(current.F)
+arrowwidth= 0.8; %'0.8' in paper
+colorarrows = 0; %if 1, will color according to colorvec. '0' in paper
+    colorvec = current.Z; %set the vector you want to color arrows by. 'current.Z' or 'current.F' recommended
 
 microns_per_FOV=current.MaxX(1)*2; %multiplies the maxX by 2 (a quadrant diameter *2 is the diameter of FOV)
 current = RenumberCells(current); %makes sure all cells going in order with no skips
