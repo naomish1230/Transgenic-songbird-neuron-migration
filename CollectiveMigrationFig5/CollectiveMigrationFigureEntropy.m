@@ -2,7 +2,6 @@
 %see also: https://www.mathworks.com/matlabcentral/fileexchange/12857-entropy
 
 %load in data and set data as "current"
-cd C:/Users/naomish/Documents/GitHub/In-vivo-Migratory-Dynamics/EntropyFig/
 load('grey3LHVC_dynamic_stats.mat')  %grey3LHVC in manuscript, but can change to different bird/region
 current = grey3LHVC_dynamic_stats; %grey3LHVC in manuscript, but can change to different bird/region
 
@@ -138,7 +137,7 @@ end
 vectors = []; %will be 3D matrix with 1st dim: cell, 2nd dim: X and Y vector, 3rd dim: increasing time since start
 cells = unique(current.N);
 tick = 0;
-for t = 2+1:timebin %all possible frames in the data, starting at 2 bc many don't have 1 in grey3L
+for t = 2+1:timebin %all possible frames in the data, starting at 2 because many don't have 1 in grey3L
     count = 0; %will count # of cells that are not available for this timepoint
     tick = tick+1; %counting # of timepoints
 for i=1:length(cells); %loop through cells
@@ -169,7 +168,6 @@ scale(2:1:100)=microns_per_FOV./(2:1:100);
 
 subplot(1,2,2)
 hold on
-%plot(log10(scale),bent,'.k')
 errorbar(log10(scale),mean(bent'),std(bent'),'.k','MarkerSize',10)
 ylabel ('Entropy')
 xlabel ('log10 Bin size')
@@ -178,7 +176,7 @@ set(gca,'FontSize',12), set(gcf,'color','w')
 
 %% SIMULATION
 %choose number of bins and loop
-for i=1:1000 %choose number of timepoints
+for i=1:1000 %choose number of timepoints, i=1:1000 for paper
 for nbins=2:100
 numbins=nbins^2; %count the total number of bins
 probs=ones(numbins,1)/numbins; %compute the probability that a cell gets added to each bin
