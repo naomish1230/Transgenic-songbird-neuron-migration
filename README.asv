@@ -13,7 +13,13 @@ Also includes a script to analyze and plot the entropy in position and  headings
 All necessary code to recreate Figure 6. Compute_MSDfunction.m is called in PopulationSuperdiffusivityPlots.m script, which fits the diffusion model.
 
 4. /Transgenic-songbird-neuron-migration/Fig7-Simulation/
-Simulation script included.
+
+This generative model is meant to simulate the migration of newborn neurons in HVC of juvenile songbirds as a stepwise process.
+
+No additional file downloads are required, simulation can be downloaded and run as is.
+Running this file yields a 3D representation of HVC that is intersected by the VZ with the birth and end points of simulated cells plotted in green and red, respectively.
+
+Users can define how long the simulation is run, how many cells are being simulated, and if they want to plot the traces of each cell's migration path (See: User-Defined Parameters for Simulation Run)
 
 5. /Transgenic-songbird-neuron-migration/Functions/
 All functions that are called in above code.
@@ -30,6 +36,7 @@ Cells that have a tortuosity above 7 or a displacement below 5 were filtered out
 
 The data columns are labeled with abbreviations. The key is as follows: 
 FOR DYNAMIC STATS
+------------------
 N --> neuron ID
 I --> Intensity (a.u.)
 X,Y,Z --> Location in X,Y,Z respectively, in microns
@@ -53,6 +60,16 @@ instvel --> instantaneous velocity, path distance over time since last step
 currentdisp/X/Y/Z --> cumulative displacement from starting position in 3D and in X,Y,Z components
 
 FOR NEUROBLAST STATS
+-------------------
 pathtot (and pathX/Y/Z) --> total distance traveled by cell, both in 3D and in X/Y/Z components
 meanZpos --> average depth of cell
 duration --> length of observation in hours
+.
+. (see above)
+.
+disptot (and dispX/Y/Z) --> total displacement of cell relative to start, both in 3D and in X/Y/Z components
+torts --> cell tortuosity
+speed --> total distance/total time
+dispXY/XZangle --> overall heading of displacement vector
+std/avg_threshdeltXY/XZ* --> average or St. Dev of thresholded (see above) changes in angle of all steps of cell
+    *if cell travels in a straight line and does not deviate, the average thresh. deltXY/XZ will be 0, and St. Dev would be small
