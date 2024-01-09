@@ -2,8 +2,11 @@ GitHub Repository (Transgenic-songbird-neuron-migration) is relevant to the foll
     In vivo imaging in transgenic songbirds reveals superdiffusive neuron migration in the adult brain (2024)
     Naomi R. Shvedov, Sina Analoui, Theresia Dafalias, Timothy J. Gardner, Benjamin B. Scott
 
+This generative model is meant to simulate the migration of newborn neurons in HVC of juvenile songbirds as a stepwise process.
 
+No additional file downloads are required, simulation can be downloaded and run as is.
+Running this file yields a 3D representation of HVC that is intersected by the VZ with the birth and end points of simulated cells plotted in green and red, respectively.
 
+Users can define how long the simulation is run, how many cells are being simulated, and if they want to plot the traces of each cell's migration path (See: User-Defined Parameters for Simulation Run)
 
-please provide synopsis here! :) 
 
