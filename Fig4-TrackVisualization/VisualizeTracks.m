@@ -6,4 +6,8 @@ addpath ../ProcessedData
 addpath ../Functions
 
 load(); %input here
-current = ; %input here
+current = (); %input here
+
+t = TemporallyColoredTracks(current)
+d = DisplacementFromOrigin3D(current)
+c = CheckHeadingBias(current)
