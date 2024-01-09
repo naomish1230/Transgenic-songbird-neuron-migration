@@ -1,10 +1,10 @@
-function [current] = TemporallyColoredTracks(current);     
+function [current,f] = TemporallyColoredTracks(current);     
 %input is data, output is figure and quadrant adjusted data
 %code will only run if not ran before this session
 
 if length(unique(current.Q)) == 1; %if data only has 1 quadrant tracked, use this to plot: 
 cells = unique(current.N);
-figure()
+f = figure();
 colormap(jet)
     hold on
     for n = cells(1):cells(end); %patch allows temporal color coding
@@ -43,7 +43,7 @@ elseif length(unique(current.Q)) >1 & ismember('fixedQ',current.Properties.Varia
     current.Y((find(current.Q(:) == 4))) = current.Y((find(current.Q(:) == 4))) + current.MaxY((find(current.Q(:) == 4)));
     end
     cells = unique(current.N);
-figure()
+f = figure();
 colormap(jet)
     hold on
     for n = cells(1):cells(end); %patch allows temporal color coding
@@ -71,7 +71,7 @@ colormap(jet)
     hold off
 elseif ismember('fixedQ',current.Properties.VariableNames) == 1;
       cells = unique(current.N);
-figure() 
+f = figure(); 
 colormap(jet)
     hold on
     for n = cells(1):cells(end); %patch allows temporal color coding
