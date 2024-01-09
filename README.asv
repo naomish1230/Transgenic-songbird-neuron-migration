@@ -30,7 +30,6 @@ Cells that have a tortuosity above 7 or a displacement below 5 were filtered out
 
 The data columns are labeled with abbreviations. The key is as follows: 
 FOR DYNAMIC STATS
-------------------
 N --> neuron ID
 I --> Intensity (a.u.)
 X,Y,Z --> Location in X,Y,Z respectively, in microns
@@ -54,16 +53,6 @@ instvel --> instantaneous velocity, path distance over time since last step
 currentdisp/X/Y/Z --> cumulative displacement from starting position in 3D and in X,Y,Z components
 
 FOR NEUROBLAST STATS
--------------------
 pathtot (and pathX/Y/Z) --> total distance traveled by cell, both in 3D and in X/Y/Z components
 meanZpos --> average depth of cell
 duration --> length of observation in hours
-.
-. (see above)
-.
-disptot (and dispX/Y/Z) --> total displacement of cell relative to start, both in 3D and in X/Y/Z components
-torts --> cell tortuosity
-speed --> total distance/total time
-dispXY/XZangle --> overall heading of displacement vector
-std/avg_threshdeltXY/XZ* --> average or St. Dev of thresholded (see above) changes in angle of all steps of cell
-    *if cell travels in a straight line and does not deviate, the average thresh. deltXY/XZ will be 0, and St. Dev would be small
