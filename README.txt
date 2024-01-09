@@ -3,4 +3,11 @@ GitHub Repository (Transgenic-songbird-neuron-migration) is relevant to the foll
     Naomi R. Shvedov, Sina Analoui, Theresia Dafalias, Timothy J. Gardner, Benjamin B. Scott
 
 
-please provide synopsis here! :) 
+ * talk about what each folder contains
+* explain what each script does
+* explain what the data is, its format, its pre-processing thats been done 
+*explain R = 0 HVC, R = 1 nidopallium or hyperpallium
+* sex = 1 female, sex = 0 male 
+* what session means, etc.
+
+in visualization: Checkheadingbias, temporallycoloredtracks, displacement from origin3D 
