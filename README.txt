@@ -1,4 +1,4 @@
-GitHub Repository (Transgenic-songbird-neuron-migration) is relevant to the following publication:
+GitHub Repository (Transgenic-songbird-neuron-migration) for the following publication:
 -----------------------------------------------------------------------------------------------------------
     In vivo imaging in transgenic songbirds reveals superdiffusive neuron migration in the adult brain (2024)
     Naomi R. Shvedov, Sina Analoui, Theresia Dafalias, Timothy J. Gardner, Benjamin B. Scott
