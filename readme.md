@@ -73,3 +73,6 @@ Naomi R. Shvedov, Sina Analoui, Theresia Dafalias, Timothy J. Gardner, Benjamin 
 * dispXY/XZangle --> overall heading of displacement vector
 * std/avg_threshdeltXY/XZ* --> average or St. Dev of thresholded (see above) changes in angle of all steps of cell
     * If cell travels in a straight line and does not deviate, the average thresh. deltXY/XZ will be 0, and St. Dev would be small
+
+
+doi: 10.5281/zenodo.10476669 
